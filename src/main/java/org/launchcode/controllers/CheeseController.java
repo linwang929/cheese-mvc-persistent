@@ -79,14 +79,15 @@ public class CheeseController {
         return "redirect:";
     }
 
-    @RequestMapping(value = "category/{category_id}", method = RequestMethod.GET)
-    public String category(@PathVariable int category_id, Model model) {
+    @RequestMapping(value = "category/{categoryId}", method = RequestMethod.GET)
+    public String category(@PathVariable int categoryId, Model model) {
 
-        Category cat = categoryDao.findOne(category_id);
+        Category cat = categoryDao.findOne(categoryId);
         List<Cheese> cheeses = cat.getCheeses();
         model.addAttribute("cheeses", cheeses);
         model.addAttribute("title", "Cheeses in Category: " + cat.getName());
 
         return "cheese/index";
     }
+
 }
